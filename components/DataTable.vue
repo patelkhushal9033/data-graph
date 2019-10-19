@@ -28,7 +28,7 @@
           <v-list-item
             v-for="(item, index) in items"
             :key="index"
-            @click="filterState(index)"
+            @click="filterState(index)" 
           >
             <v-list-item-title>{{ item.title }}</v-list-item-title>
           </v-list-item>
