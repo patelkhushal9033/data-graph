@@ -1,0 +1,27 @@
+{
+  "name": "data-graph",
+  "version": "1.0.0",
+  "description": "Graphs and Data Tables for TIG Code Test.",
+  "author": "Khushal",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "heroku-postbuild": "npm run build"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.3.6",
+    "chart.js": "^2.8.0",
+    "nuxt": "^2.0.0",
+    "vue-chartjs": "^3.4.2",
+    "vue-google-charts": "^0.3.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.0.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "prettier": "^1.16.4"
+  }
+}
