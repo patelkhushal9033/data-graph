@@ -7,7 +7,7 @@
     <v-toolbar-title>DashBoard</v-toolbar-title>
     <v-spacer></v-spacer>
     <v-btn 
-      fab
+      xfab
       small
       elevation="0"
       color="pink"

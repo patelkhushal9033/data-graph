@@ -1,44 +1,41 @@
 <template>
-  <v-skeleton-loader
-    ref="skeleton"
-    type="card-heading, image"
-    transition-group="scale-transition"
-    :loading="isLoading"
-    light
-    >
-    <v-card light>
-      <v-card-title class="blue white--text">
-        <span>Pie Chart</span>
-        <v-spacer></v-spacer>
-        <v-menu bottom left>
-          <template v-slot:activator="{ on }">
-            <v-btn
-              dark
-              icon
-              v-on="on"
-            >
-              <v-icon>mdi-filter-menu</v-icon>
-            </v-btn>
-          </template>
+  <v-card light>
+    <v-card-title class="blue white--text">
+      <span>Pie Chart</span>
+      <v-spacer></v-spacer>
+      <v-menu 
+        bottom 
+        left
+        :disabled="isDisabled"
+        >
+        <template v-slot:activator="{ on }">
+          <v-btn
+            dark
+            icon
+            :disabled="isDisabled"
+            v-on="on"
+          >
+            <v-icon>mdi-filter-menu</v-icon>
+          </v-btn>
+        </template>
 
-          <v-list light>
-            <v-list-item
-              v-for="(item, i) in items"
-              :key="i"
-              @click="filterChart(i)"
-              >
-              <v-list-item-title>{{ item.title }}</v-list-item-title>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-      </v-card-title>
-      <GChart
-        type="PieChart"
-        :data="chartData"
-        :options="chartOptions"
-      />
-    </v-card>
-  </v-skeleton-loader>
+        <v-list>
+          <v-list-item
+            v-for="(item, i) in items"
+            :key="i"
+            @click="filterChart(i)"
+            >
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item>
+        </v-list>
+      </v-menu>
+    </v-card-title>
+    <GChart
+      type="PieChart"
+      :data="chartData"
+      :options="chartOptions"
+    />
+  </v-card>
 </template>
 
 
@@ -53,18 +50,18 @@ export default {
     chartData() {
       var data = this.$store.getters.getChartData
       if(data == ''){
-        this.isLoading = true
+        this.isDisabled = true
       }
       else
       {
-        this.isLoading = false
-        return this.$store.getters.getChartData
+        this.isDisabled = false
+        return data
       }
     }
   },
   data() {
     return {
-      isLoading: true,
+      isDisabled: true,
       chartOptions: {
         chart: {
           title: 'Shipment Details',

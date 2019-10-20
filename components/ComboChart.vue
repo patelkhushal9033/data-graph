@@ -1,20 +1,12 @@
 <template>
-  <v-skeleton-loader
-    ref="skeleton"
-    type="card-heading, image"
-    transition-group="scale-transition"
-    :loading="isLoading"
-    light
-    >
-    <v-card light>
-      <v-card-title class="blue white--text">Column Chart</v-card-title>
-      <GChart
-        type="ComboChart"
-        :data="chartData"
-        :options="chartOptions"
-      />
-    </v-card>
-  </v-skeleton-loader>
+  <v-card light>
+    <v-card-title class="blue white--text">Combo Chart</v-card-title>
+    <GChart
+      type="ComboChart"
+      :data="chartData"
+      :options="chartOptions"
+    />
+  </v-card>
 </template>
 
 
@@ -27,15 +19,7 @@ export default {
   },
   computed: {
     chartData() {
-      var data = this.$store.getters.getChartData
-      if(data == ''){
-        this.isLoading = true
-      }
-      else
-      {
-        this.isLoading = false
-        return this.$store.getters.getChartData
-      }
+      return this.$store.getters.getChartData
     }
   },
   data() {
@@ -47,7 +31,6 @@ export default {
         ['2016', 660, 1120, 300],
         ['2017', 1030, 540, 350]
       ],
-      isLoading: true,
       chartOptions: {
         chart: {
           title: 'Shipment Details',
