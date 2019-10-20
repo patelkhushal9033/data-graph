@@ -1,15 +1,27 @@
 <template>
   <v-app-bar
-    color="deep-purple accent-4"
+    color="blue"
     dense
     dark
     >
     <v-toolbar-title>DashBoard</v-toolbar-title>
     <v-spacer></v-spacer>
+    <v-btn 
+      fab
+      small
+      elevation="0"
+      color="pink"
+      @click="$refs.file.click()">
+      <v-icon>mdi-attachment</v-icon>
+    </v-btn>
+    
     <input
-    type="file" 
-    accept=".csv"
-    @change="loadCSV($event)">
+      type="file"
+      ref="file" 
+      accept=".csv"
+      style="display: none"
+      @change="loadCSV($event)">
+
   </v-app-bar>
 </template>
 
@@ -29,20 +41,19 @@ export default {
       var headers = lines[0].split(",")
       vm.parse_header = lines[0].split(",")
       
-      lines.map(function(line, indexLine){
+      lines.forEach(function(line, indexLine){
         if (indexLine < 1) return // Jump header line
         
         var obj = {}
         var currentline = line.split(",")
-        
-        headers.map(function(header, indexHeader){
-          obj[header] = currentline[indexHeader]
+        if(currentline == ''|| undefined) return   
+        headers.forEach(function(header, indexHeader) {
+          let val = currentline[indexHeader].trim()
+          obj[header.trim()] = val === "" ? "-" : val
         })
         
         result.push(obj)
       })
-      console.log(result[2].LAT );
-      result.pop()
       vm.$store.commit('SET_CSV', result)
     },
     loadCSV(e) {

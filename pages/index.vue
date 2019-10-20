@@ -12,7 +12,7 @@
         <BarChart/>
       </v-col>
       <v-col cols="12" sm="6">
-        <LineChart/>
+        <ComboChart/>
       </v-col>
       <v-col cols="12" sm="6">
         <AreaChart/>
@@ -26,7 +26,7 @@
 import DataTable from '~/components/DataTable.vue'
 import PieChart from '~/components/PieChart.vue'
 import BarChart from '~/components/BarChart.vue'
-import LineChart from '~/components/LineChart.vue'
+import ComboChart from '~/components/ComboChart.vue'
 import AreaChart from '~/components/AreaChart.vue'
 
 export default {
@@ -34,7 +34,7 @@ export default {
     DataTable,
     PieChart,
     BarChart,
-    LineChart,
+    ComboChart,
     AreaChart
   }
 }

@@ -3,9 +3,9 @@ export const getters = {
     var obj = state.csv.map(function (data) {
       return data.STATE
     })
-
+    if(obj.length === 0) return []
     var count = []
-    count['state'] = 'Deliver'
+    count['state'] = 'Orders'
     obj.forEach(function(i) {
       count[i] = (count[i]||0) + 1
     })

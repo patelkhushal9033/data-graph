@@ -9,7 +9,7 @@
     <v-card light>
       <v-card-title class="blue white--text">Column Chart</v-card-title>
       <GChart
-        type="SteppedAreaChart"
+        type="ComboChart"
         :data="chartData"
         :options="chartOptions"
       />
@@ -40,12 +40,21 @@ export default {
   },
   data() {
     return {
+      chartData1: [
+        ['Year', 'Sales', 'Expenses', 'Profit'],
+        ['2014', 1000, 400, 200],
+        ['2015', 1170, 460, 250],
+        ['2016', 660, 1120, 300],
+        ['2017', 1030, 540, 350]
+      ],
       isLoading: true,
       chartOptions: {
         chart: {
           title: 'Shipment Details',
           subtitle: 'State, Numbers of shipments',
-        },
+          },
+        seriesType: 'bars',
+        series: {1: {type: 'line'}},
         vAxis: {title: 'Orders'},
         hAxis: {title: 'State'}
       }
