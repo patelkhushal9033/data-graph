@@ -6,8 +6,7 @@
     >
     <v-toolbar-title>DashBoard</v-toolbar-title>
     <v-spacer></v-spacer>
-    <v-btn 
-      xfab
+    <v-btn
       small
       elevation="0"
       color="pink"
@@ -39,7 +38,12 @@ export default {
       var lines = csv.split("\n")
       var result = []
       var headers = lines[0].split(",")
-      vm.parse_header = lines[0].split(",")
+      
+      headers.forEach(function(line, index){
+        headers[index] = headers[index].replace(/ /g,"")
+        return headers
+      })
+      vm.parse_header = headers
       
       lines.forEach(function(line, indexLine){
         if (indexLine < 1) return // Jump header line

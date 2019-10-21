@@ -48,7 +48,7 @@ export default {
   },
   computed: {
     chartData() {
-      var data = this.$store.getters.getChartData
+      var data = this.$store.getters.getOrdersCount
       if(data == ''){
         this.isDisabled = true
       }

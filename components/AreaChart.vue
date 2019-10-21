@@ -18,7 +18,7 @@ export default {
   },
   computed: {
     chartData() {
-      return this.$store.getters.getChartData
+      return this.$store.getters.getCountryOrder
     }
   },
   data() {
@@ -29,7 +29,7 @@ export default {
           subtitle: 'State, Numbers of shipments',
         },
         vAxis: {title: 'Orders'},
-        hAxis: {title: 'State'}
+        hAxis: {title: 'Country'}
       }
     }
   }

@@ -19,18 +19,28 @@ export default {
   },
   computed: {
     chartData() {
-      return this.$store.getters.getChartData
+      let order = this.$store.getters.getOrdersCount
+      let suburb = this.$store.getters.getSuburbCount
+      if(order.length == 0 && suburb.length == 0) 
+      {
+        return []
+        
+      }
+      let combine = []
+      combine.push(['state','order','suburb'])
+      order.forEach(function(item, i){
+        if(item[0] == suburb[i][0])
+        {
+          combine.push([item[0],item[1],suburb[i][1]])
+        }
+      })
+      
+      return combine
+
     }
   },
   data() {
     return {
-      chartData1: [
-        ['Year', 'Sales', 'Expenses', 'Profit'],
-        ['2014', 1000, 400, 200],
-        ['2015', 1170, 460, 250],
-        ['2016', 660, 1120, 300],
-        ['2017', 1030, 540, 350]
-      ],
       chartOptions: {
         chart: {
           title: 'Shipment Details',

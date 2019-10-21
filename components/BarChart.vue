@@ -19,7 +19,7 @@ export default {
   },
   computed: {
     chartData() {
-      return this.$store.getters.getChartData
+      return this.$store.getters.getSuburbCount
     },
   },
   data() {
@@ -29,7 +29,7 @@ export default {
           title: 'Shipment Details',
           subtitle: 'State, Numbers of orders',
         },
-        vAxis: {title: 'Orders'},
+        vAxis: {title: 'Suburb'},
         hAxis: {title: 'State'}
       }
     }
